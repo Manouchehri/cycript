@@ -167,15 +167,16 @@ _finline int cylex_(cy::parser::semantic_type *semantic, CYLocation *location, C
     return token;
 }
 
-#define yylex_(semantic, location, driver) ({ \
-    int type; \
-    if (driver.hold_ == cy::parser::empty_symbol) \
-        type = yytranslate_(cylex_(semantic, location, driver)); \
-    else { \
-        type = driver.hold_; \
-        driver.hold_ = cy::parser::empty_symbol; \
-    } \
-type; })
+_finline int yylex_(cy::parser::semantic_type *semantic, CYLocation *location, CYDriver &driver) {
+    int type;
+    if (driver.hold_ == cy::parser::empty_symbol)
+        type = yytranslate_(cylex_(semantic, location, driver));
+    else {
+        type = driver.hold_;
+        driver.hold_ = cy::parser::empty_symbol;
+    }
+    return type;
+}
 
 #define CYLEX() do if (yyla.empty()) { \
     YYCDEBUG << "Mapping a token: "; \
@@ -2278,7 +2279,7 @@ SelectorCall_
     ;
 
 SelectorCall
-    : SelectorWordOpt[name] ":" AssignmentExpressionClassic[value] SelectorCall_[next] { $$ = CYNew CYArgument($name ?: CYNew CYWord(""), $value, $next); }
+    : SelectorWordOpt[name] ":" AssignmentExpressionClassic[value] SelectorCall_[next] { $$ = CYNew CYArgument($name ? $name : CYNew CYWord(""), $value, $next); }
     ;
 
 SelectorList
