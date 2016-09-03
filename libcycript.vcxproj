@@ -68,13 +68,33 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)build\$(PlatformName)-$(Configuration)\lib\</OutDir>
+    <IntDir>$(SolutionDir)build\$(PlatformName)-$(Configuration)\obj\$(ProjectName)\</IntDir>
+    <TargetName>cycript</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)build\$(PlatformName)-$(Configuration)\lib\</OutDir>
+    <IntDir>$(SolutionDir)build\$(PlatformName)-$(Configuration)\obj\$(ProjectName)\</IntDir>
+    <TargetName>cycript</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)build\$(PlatformName)-$(Configuration)\lib\</OutDir>
+    <IntDir>$(SolutionDir)build\$(PlatformName)-$(Configuration)\obj\$(ProjectName)\</IntDir>
+    <TargetName>cycript</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)build\$(PlatformName)-$(Configuration)\lib\</OutDir>
+    <IntDir>$(SolutionDir)build\$(PlatformName)-$(Configuration)\obj\$(ProjectName)\</IntDir>
+    <TargetName>cycript</TargetName>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ForcedIncludeFiles>config-win32.h</ForcedIncludeFiles>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -83,6 +103,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ForcedIncludeFiles>config-win32.h</ForcedIncludeFiles>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -93,6 +114,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ForcedIncludeFiles>config-win32.h</ForcedIncludeFiles>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -107,6 +129,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ForcedIncludeFiles>config-win32.h</ForcedIncludeFiles>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -115,9 +138,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Driver.cpp" />
+    <ClCompile Include="Error.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Driver.hpp" />
+    <ClInclude Include="Error.hpp" />
+    <ClInclude Include="Exception.hpp" />
+    <ClInclude Include="Local.hpp" />
+    <ClInclude Include="Location.hpp" />
+    <ClInclude Include="Options.hpp" />
+    <ClInclude Include="Pooling.hpp" />
+    <ClInclude Include="Standard.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="config-win32.h" />
