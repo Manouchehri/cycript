@@ -61,13 +61,11 @@
     <None Include="config-win32.h">
       <Filter>Header Files</Filter>
     </None>
-    <None Include="Parser.ypp.in">
-      <Filter>Resource Files</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Scanner.lpp.in">
       <Filter>Resource Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="Parser.ypp.in" />
   </ItemGroup>
 </Project>

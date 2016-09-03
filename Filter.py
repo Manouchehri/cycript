@@ -1,4 +1,5 @@
 import codecs
+import os
 import re
 import sys
 
@@ -16,7 +17,8 @@ def include(source, filters):
             if not handled:
                 match = include_pattern.match(line)
                 if match is not None:
-                    include(match.group(1), filters)
+                    other_source = os.path.join(os.path.dirname(source), match.group(1))
+                    include(other_source, filters)
                     handled = True
 
             if not handled:
