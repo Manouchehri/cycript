@@ -20,6 +20,7 @@
 /* }}} */
 
 %top{
+#ifndef _MSC_VER
 #if defined(__clang__)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-register"
@@ -30,6 +31,7 @@
 #pragma GCC diagnostic ignored "-Wsign-compare"
 #pragma GCC diagnostic ignored "-Wunused-function"
 #pragma GCC diagnostic ignored "-Wunused-variable"
+#endif
 #endif
 }
 
@@ -723,9 +725,11 @@ bool CYLexerHighlight(hi::Value &highlight, CYLocation &location, void *scanner)
     return true;
 }
 
+#ifndef _MSC_VER
 #if defined(__clang__)
 #pragma clang diagnostic pop
 #else
 // must not pop -Wunused-function
 //#pragma GCC diagnostic pop
+#endif
 #endif
