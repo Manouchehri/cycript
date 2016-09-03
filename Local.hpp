@@ -22,12 +22,50 @@
 #ifndef CYCRIPT_LOCAL_HPP
 #define CYCRIPT_LOCAL_HPP
 
-#include <pthread.h>
+#ifdef _WIN32
+
+typedef void *CYLocalKey;
 
 template <typename Type_>
 class CYLocal {
   private:
-    static ::pthread_key_t key_;
+    static CYLocalKey key_;
+
+    Type_ *last_;
+
+  protected:
+    static _finline void Set(Type_ *value) {
+    }
+
+    static void *Key_() {
+        return nullptr;
+    }
+
+  public:
+    CYLocal(Type_ *next) {
+        last_ = Get();
+        Set(next);
+    }
+
+    _finline ~CYLocal() {
+        Set(last_);
+    }
+
+    static _finline Type_ *Get() {
+        return nullptr;
+    }
+};
+
+#else
+
+#include <pthread.h>
+
+typedef ::pthread_key_t CYLocalKey;
+
+template <typename Type_>
+class CYLocal {
+  private:
+    static CYLocalKey key_;
 
     Type_ *last_;
 
@@ -56,5 +94,7 @@ class CYLocal {
         return reinterpret_cast<Type_ *>(::pthread_getspecific(key_));
     }
 };
+
+#endif
 
 #endif/*CYCRIPT_LOCAL_HPP*/
