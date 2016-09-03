@@ -174,20 +174,16 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Scanner.cpp</Outputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UnicodeIDStart.l;UnicodeIDContinue.l;%(AdditionalInputs)</AdditionalInputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(ProjectDir)Filter.py" "$(ProjectDir)Scanner.lpp.in" C Java Ruby Python ObjectiveC &gt; "$(IntDir)Scanner.lpp" || exit 1
-"$(ProjectDir)winflexbison\win_flex.exe" -o "$(IntDir)Scanner.cpp.tmp" -T "$(IntDir)Scanner.lpp" 2&gt;"$(IntDir)Scanner.output" || exit 1
-move /y "$(IntDir)Scanner.cpp.tmp" "$(IntDir)Scanner.cpp" &gt;NUL || exit 1
+"$(ProjectDir)winflexbison\win_flex.exe" -o "$(IntDir)Scanner.cpp" -T "$(IntDir)Scanner.lpp" 2&gt;"$(IntDir)Scanner.output" || exit 1
 </Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(ProjectDir)Filter.py" "$(ProjectDir)Scanner.lpp.in" C Java Ruby Python ObjectiveC &gt; "$(IntDir)Scanner.lpp" || exit 1
-"$(ProjectDir)winflexbison\win_flex.exe" -o "$(IntDir)Scanner.cpp.tmp" -T "$(IntDir)Scanner.lpp" 2&gt;"$(IntDir)Scanner.output" || exit 1
-move /y "$(IntDir)Scanner.cpp.tmp" "$(IntDir)Scanner.cpp" &gt;NUL || exit 1
+"$(ProjectDir)winflexbison\win_flex.exe" -o "$(IntDir)Scanner.cpp" -T "$(IntDir)Scanner.lpp" 2&gt;"$(IntDir)Scanner.output" || exit 1
 </Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(ProjectDir)Filter.py" "$(ProjectDir)Scanner.lpp.in" C Java Ruby Python ObjectiveC &gt; "$(IntDir)Scanner.lpp" || exit 1
-"$(ProjectDir)winflexbison\win_flex.exe" -o "$(IntDir)Scanner.cpp.tmp" -T "$(IntDir)Scanner.lpp" 2&gt;"$(IntDir)Scanner.output" || exit 1
-move /y "$(IntDir)Scanner.cpp.tmp" "$(IntDir)Scanner.cpp" &gt;NUL || exit 1
+"$(ProjectDir)winflexbison\win_flex.exe" -o "$(IntDir)Scanner.cpp" -T "$(IntDir)Scanner.lpp" 2&gt;"$(IntDir)Scanner.output" || exit 1
 </Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(ProjectDir)Filter.py" "$(ProjectDir)Scanner.lpp.in" C Java Ruby Python ObjectiveC &gt; "$(IntDir)Scanner.lpp" || exit 1
-"$(ProjectDir)winflexbison\win_flex.exe" -o "$(IntDir)Scanner.cpp.tmp" -T "$(IntDir)Scanner.lpp" 2&gt;"$(IntDir)Scanner.output" || exit 1
-move /y "$(IntDir)Scanner.cpp.tmp" "$(IntDir)Scanner.cpp" &gt;NUL || exit 1
+"$(ProjectDir)winflexbison\win_flex.exe" -o "$(IntDir)Scanner.cpp" -T "$(IntDir)Scanner.lpp" 2&gt;"$(IntDir)Scanner.output" || exit 1
 </Command>
     </CustomBuild>
     <CustomBuild Include="Parser.ypp.in">
