@@ -138,10 +138,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="$(IntDir)Scanner.cpp" />
+    <ClCompile Include="$(IntDir)Parser.cpp" />
     <ClCompile Include="Driver.cpp" />
     <ClCompile Include="Error.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(IntDir)Parser.hpp" />
     <ClInclude Include="Driver.hpp" />
     <ClInclude Include="Error.hpp" />
     <ClInclude Include="Exception.hpp" />
@@ -169,19 +171,42 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UnicodeIDStart.l;UnicodeIDContinue.l;%(AdditionalInputs)</AdditionalInputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(ProjectDir)Filter.py" "$(ProjectDir)Scanner.lpp.in" C Java Ruby Python ObjectiveC &gt; "$(IntDir)Scanner.lpp" || exit 1
 "$(ProjectDir)winflexbison\win_flex.exe" -o "$(IntDir)Scanner.cpp.tmp" -T "$(IntDir)Scanner.lpp" 2&gt;"$(IntDir)Scanner.output" || exit 1
-move /y "$(IntDir)Scanner.cpp.tmp" "$(IntDir)Scanner.cpp" &gt;NUL
+move /y "$(IntDir)Scanner.cpp.tmp" "$(IntDir)Scanner.cpp" &gt;NUL || exit 1
 </Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(ProjectDir)Filter.py" "$(ProjectDir)Scanner.lpp.in" C Java Ruby Python ObjectiveC &gt; "$(IntDir)Scanner.lpp" || exit 1
 "$(ProjectDir)winflexbison\win_flex.exe" -o "$(IntDir)Scanner.cpp.tmp" -T "$(IntDir)Scanner.lpp" 2&gt;"$(IntDir)Scanner.output" || exit 1
-move /y "$(IntDir)Scanner.cpp.tmp" "$(IntDir)Scanner.cpp" &gt;NUL
+move /y "$(IntDir)Scanner.cpp.tmp" "$(IntDir)Scanner.cpp" &gt;NUL || exit 1
 </Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(ProjectDir)Filter.py" "$(ProjectDir)Scanner.lpp.in" C Java Ruby Python ObjectiveC &gt; "$(IntDir)Scanner.lpp" || exit 1
 "$(ProjectDir)winflexbison\win_flex.exe" -o "$(IntDir)Scanner.cpp.tmp" -T "$(IntDir)Scanner.lpp" 2&gt;"$(IntDir)Scanner.output" || exit 1
-move /y "$(IntDir)Scanner.cpp.tmp" "$(IntDir)Scanner.cpp" &gt;NUL
+move /y "$(IntDir)Scanner.cpp.tmp" "$(IntDir)Scanner.cpp" &gt;NUL || exit 1
 </Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(ProjectDir)Filter.py" "$(ProjectDir)Scanner.lpp.in" C Java Ruby Python ObjectiveC &gt; "$(IntDir)Scanner.lpp" || exit 1
 "$(ProjectDir)winflexbison\win_flex.exe" -o "$(IntDir)Scanner.cpp.tmp" -T "$(IntDir)Scanner.lpp" 2&gt;"$(IntDir)Scanner.output" || exit 1
-move /y "$(IntDir)Scanner.cpp.tmp" "$(IntDir)Scanner.cpp" &gt;NUL
+move /y "$(IntDir)Scanner.cpp.tmp" "$(IntDir)Scanner.cpp" &gt;NUL || exit 1
+</Command>
+    </CustomBuild>
+    <CustomBuild Include="Parser.ypp.in">
+      <FileType>Document</FileType>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating Parser.hpp</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Parser.hpp</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating Parser.hpp</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Parser.hpp</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating Parser.hpp</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Parser.hpp</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Parser.hpp</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Parser.hpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(ProjectDir)Filter.py" "$(ProjectDir)Parser.ypp.in" C Java Ruby Python ObjectiveC &gt; "$(IntDir)Parser.ypp" || exit 1
+"$(ProjectDir)winflexbison\win_bison.exe" -v --report=state -Werror -o "$(IntDir)Parser.cpp" "$(IntDir)Parser.ypp" || exit 1
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(ProjectDir)Filter.py" "$(ProjectDir)Parser.ypp.in" C Java Ruby Python ObjectiveC &gt; "$(IntDir)Parser.ypp" || exit 1
+"$(ProjectDir)winflexbison\win_bison.exe" -v --report=state -Werror -o "$(IntDir)Parser.cpp" "$(IntDir)Parser.ypp" || exit 1
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(ProjectDir)Filter.py" "$(ProjectDir)Parser.ypp.in" C Java Ruby Python ObjectiveC &gt; "$(IntDir)Parser.ypp" || exit 1
+"$(ProjectDir)winflexbison\win_bison.exe" -v --report=state -Werror -o "$(IntDir)Parser.cpp" "$(IntDir)Parser.ypp" || exit 1
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(ProjectDir)Filter.py" "$(ProjectDir)Parser.ypp.in" C Java Ruby Python ObjectiveC &gt; "$(IntDir)Parser.ypp" || exit 1
+"$(ProjectDir)winflexbison\win_bison.exe" -v --report=state -Werror -o "$(IntDir)Parser.cpp" "$(IntDir)Parser.ypp" || exit 1
 </Command>
     </CustomBuild>
   </ItemGroup>

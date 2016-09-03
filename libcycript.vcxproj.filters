@@ -24,6 +24,9 @@
     <ClCompile Include="$(IntDir)Scanner.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="$(IntDir)Parser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Driver.hpp">
@@ -50,15 +53,21 @@
     <ClInclude Include="Local.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="$(IntDir)Parser.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="config-win32.h">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="Parser.ypp.in">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Scanner.lpp.in">
-      <Filter>Source Files</Filter>
+      <Filter>Resource Files</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>
