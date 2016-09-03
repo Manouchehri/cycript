@@ -99,11 +99,5 @@
 /* Version number of package */
 #define VERSION "1.0.0"
 
-#ifdef _WIN64
-typedef __int64 ssize_t;
-#else
-typedef long ssize_t;
-#endif
-
 #pragma warning(disable:4244) /* Possible loss of data */
 #pragma warning(disable:4291) /* No matching operator delete found */
