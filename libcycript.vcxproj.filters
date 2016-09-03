@@ -56,6 +56,9 @@
     <ClInclude Include="$(IntDir)Parser.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Stack.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="config-win32.h">
