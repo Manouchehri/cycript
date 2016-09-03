@@ -21,6 +21,9 @@
     <ClCompile Include="Error.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="$(IntDir)Scanner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Driver.hpp">
@@ -52,5 +55,10 @@
     <None Include="config-win32.h">
       <Filter>Header Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Scanner.lpp.in">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
   </ItemGroup>
 </Project>

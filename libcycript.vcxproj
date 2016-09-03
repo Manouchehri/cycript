@@ -93,7 +93,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <ForcedIncludeFiles>config-win32.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>$(ProjectDir)config-win32.h</ForcedIncludeFiles>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -102,7 +102,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <ForcedIncludeFiles>config-win32.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>$(ProjectDir)config-win32.h</ForcedIncludeFiles>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -113,7 +113,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <ForcedIncludeFiles>config-win32.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>$(ProjectDir)config-win32.h</ForcedIncludeFiles>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -128,7 +128,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <ForcedIncludeFiles>config-win32.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>$(ProjectDir)config-win32.h</ForcedIncludeFiles>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="$(IntDir)Scanner.cpp" />
     <ClCompile Include="Driver.cpp" />
     <ClCompile Include="Error.cpp" />
   </ItemGroup>
@@ -152,6 +153,37 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="config-win32.h" />
+    <CustomBuild Include="Scanner.lpp.in">
+      <FileType>Document</FileType>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating Scanner.cpp</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scanner.cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">UnicodeIDStart.l;UnicodeIDContinue.l;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating Scanner.cpp</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Scanner.cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">UnicodeIDStart.l;UnicodeIDContinue.l;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating Scanner.cpp</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Scanner.cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UnicodeIDStart.l;UnicodeIDContinue.l;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Scanner.cpp</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Scanner.cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UnicodeIDStart.l;UnicodeIDContinue.l;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(ProjectDir)Filter.py" "$(ProjectDir)Scanner.lpp.in" C Java Ruby Python ObjectiveC &gt; "$(IntDir)Scanner.lpp" || exit 1
+"$(ProjectDir)winflexbison\win_flex.exe" -o "$(IntDir)Scanner.cpp.tmp" -T "$(IntDir)Scanner.lpp" 2&gt;"$(IntDir)Scanner.output" || exit 1
+move /y "$(IntDir)Scanner.cpp.tmp" "$(IntDir)Scanner.cpp" &gt;NUL
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(ProjectDir)Filter.py" "$(ProjectDir)Scanner.lpp.in" C Java Ruby Python ObjectiveC &gt; "$(IntDir)Scanner.lpp" || exit 1
+"$(ProjectDir)winflexbison\win_flex.exe" -o "$(IntDir)Scanner.cpp.tmp" -T "$(IntDir)Scanner.lpp" 2&gt;"$(IntDir)Scanner.output" || exit 1
+move /y "$(IntDir)Scanner.cpp.tmp" "$(IntDir)Scanner.cpp" &gt;NUL
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(ProjectDir)Filter.py" "$(ProjectDir)Scanner.lpp.in" C Java Ruby Python ObjectiveC &gt; "$(IntDir)Scanner.lpp" || exit 1
+"$(ProjectDir)winflexbison\win_flex.exe" -o "$(IntDir)Scanner.cpp.tmp" -T "$(IntDir)Scanner.lpp" 2&gt;"$(IntDir)Scanner.output" || exit 1
+move /y "$(IntDir)Scanner.cpp.tmp" "$(IntDir)Scanner.cpp" &gt;NUL
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(ProjectDir)Filter.py" "$(ProjectDir)Scanner.lpp.in" C Java Ruby Python ObjectiveC &gt; "$(IntDir)Scanner.lpp" || exit 1
+"$(ProjectDir)winflexbison\win_flex.exe" -o "$(IntDir)Scanner.cpp.tmp" -T "$(IntDir)Scanner.lpp" 2&gt;"$(IntDir)Scanner.output" || exit 1
+move /y "$(IntDir)Scanner.cpp.tmp" "$(IntDir)Scanner.cpp" &gt;NUL
+</Command>
+    </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
