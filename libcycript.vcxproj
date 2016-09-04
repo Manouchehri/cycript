@@ -150,12 +150,14 @@
     <ClCompile Include="$(IntDir)Parser.cpp" />
     <ClCompile Include="Driver.cpp" />
     <ClCompile Include="Error.cpp" />
+    <ClCompile Include="Output.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(IntDir)Parser.hpp" />
     <ClInclude Include="Driver.hpp" />
     <ClInclude Include="Error.hpp" />
     <ClInclude Include="Exception.hpp" />
+    <ClInclude Include="List.hpp" />
     <ClInclude Include="Local.hpp" />
     <ClInclude Include="Location.hpp" />
     <ClInclude Include="Options.hpp" />
