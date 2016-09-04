@@ -102,3 +102,5 @@
 #pragma warning(disable:4244) /* Possible loss of data */
 #pragma warning(disable:4267) /* Possible loss of data */
 #pragma warning(disable:4291) /* No matching operator delete found */
+
+#define _CRT_SECURE_NO_WARNINGS
