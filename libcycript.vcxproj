@@ -151,6 +151,7 @@
     <ClCompile Include="Driver.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="Output.cpp" />
+    <ClCompile Include="Replace.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(IntDir)Parser.hpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Location.hpp" />
     <ClInclude Include="Options.hpp" />
     <ClInclude Include="Pooling.hpp" />
+    <ClInclude Include="Replace.hpp" />
     <ClInclude Include="Stack.hpp" />
     <ClInclude Include="Standard.hpp" />
   </ItemGroup>
