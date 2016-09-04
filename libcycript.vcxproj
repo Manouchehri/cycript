@@ -204,18 +204,22 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cd "$(IntDir)"
 "$(ProjectDir)Filter.py" "$(ProjectDir)Parser.ypp.in" C Java Ruby Python ObjectiveC &gt; Parser.ypp || exit 1
 "$(ProjectDir)windeps\usr\bin\bison.exe" -v --report=state -Werror -o Parser.cpp Parser.ypp || exit 1
+"$(ProjectDir)FixupParser.py" Parser.cpp || exit 1
 </Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cd "$(IntDir)"
 "$(ProjectDir)Filter.py" "$(ProjectDir)Parser.ypp.in" C Java Ruby Python ObjectiveC &gt; Parser.ypp || exit 1
 "$(ProjectDir)windeps\usr\bin\bison.exe" -v --report=state -Werror -o Parser.cpp Parser.ypp || exit 1
+"$(ProjectDir)FixupParser.py" Parser.cpp || exit 1
 </Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cd "$(IntDir)"
 "$(ProjectDir)Filter.py" "$(ProjectDir)Parser.ypp.in" C Java Ruby Python ObjectiveC &gt; Parser.ypp || exit 1
 "$(ProjectDir)windeps\usr\bin\bison.exe" -v --report=state -Werror -o Parser.cpp Parser.ypp || exit 1
+"$(ProjectDir)FixupParser.py" Parser.cpp || exit 1
 </Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cd "$(IntDir)"
 "$(ProjectDir)Filter.py" "$(ProjectDir)Parser.ypp.in" C Java Ruby Python ObjectiveC &gt; Parser.ypp || exit 1
 "$(ProjectDir)windeps\usr\bin\bison.exe" -v --report=state -Werror -o Parser.cpp Parser.ypp || exit 1
+"$(ProjectDir)FixupParser.py" Parser.cpp || exit 1
 </Command>
     </CustomBuild>
   </ItemGroup>
